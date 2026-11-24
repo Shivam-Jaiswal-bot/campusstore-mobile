@@ -1,56 +1,58 @@
-# Welcome to your Expo app 👋
+# CampusStore 📚🥤
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile campus-essentials browsing app built with **Expo + React Native + TypeScript**.
+Students can explore stationery, snacks, study gear, bottles and hostel room essentials.
+This is a browsing interface only (no checkout).
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run
 
 ```bash
-npm run reset-project
+npm install
+npx expo start      # press i (iOS), a (Android), w (web) or scan the QR with Expo Go
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+## Milestones
 
-### Other setup steps
+| Tag | Milestone | Status |
+| --- | --- | --- |
+| `assignment-1` | Static Home shell | ✅ Done |
+| `assignment-2` | Controlled search + reusable category grid | ⏳ |
+| `assignment-3` | Stack + Tabs + dynamic category screen | ⏳ |
+| `assignment-4` | Typed products + filtering + ProductCard | ⏳ |
+| `assignment-5` | FlatList catalog + empty/invalid states | ⏳ |
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Assignment 1 — change summary
 
-## Learn more
+`src/app/index.tsx` replaces the Expo starter screen with a static CampusStore Home:
 
-To learn more about developing your project with Expo, look at the following resources:
+- **SafeAreaView** (`react-native-safe-area-context`) keeps content clear of the notch and status bar.
+- **Header**: app name, the tagline "Ready for your next class" and the pickup location
+  ("Student Centre, Gate 2"), laid out in a horizontal `flexDirection: 'row'` with `space-between`.
+- **Search area**: an uncontrolled `TextInput` with an informative placeholder (state comes in A2).
+- **ScrollView** containing the "Shop by Category" title, intro text, an info note, and a row
+  showing store hours (Flexbox `row` with `flex: 1` items).
+- All styles live in `StyleSheet.create` with one shared colour palette (navy + amber campus theme).
+- Every string sits inside a `<Text>`; there is no raw text inside a `View`.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Folder structure (A1)
 
-## Join the community
+```text
+src/
+  app/
+    _layout.tsx     # root layout (native tabs from the Expo template)
+    index.tsx       # CampusStore Home (A1)
+    explore.tsx     # Explore tab (template, kept for A3)
+  components/       # template components
+  constants/theme.ts
+```
 
-Join our community of developers creating universal apps.
+## Test scenarios (A1)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. App launches → Home shows header, search bar and the "Shop by Category" section with no crash.
+2. Tap the search box → keyboard opens and typing works (uncontrolled).
+3. Small phone / landscape → text stays readable and the content scrolls.
+4. The Home and Explore tabs both still open.
+
+## Screenshots
+
+_Add `screenshots/a1-home.png` and `screenshots/a1-search.png` here._
